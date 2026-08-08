@@ -55,4 +55,14 @@ class GameManager:
         return ret
 
     def handle(self, keys):
-        pass
+        for snake in self.snakes:
+            snake.handle(keys)
+
+        for snake in self.snakes:
+            snake.next_move()
+
+        self.turn += 1
+
+        if self.turn % 10 == 0:
+            next_fruit = self.get_next_fruit_pos()
+            self.get_cell(next_fruit).set_color(consts.fruit_color)
