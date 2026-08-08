@@ -31,4 +31,24 @@ class Snake:
         pass
 
     def handle(self, keys):
-        pass
+        for k in keys:
+            if k in self.keys:
+                if k == 'w':
+                    if self.direction != 'DOWN':
+                        self.direction = "UP"
+                        break
+
+                if k == 's':
+                    if self.direction != "UP":
+                        self.direction = "DOWN"
+                        break
+
+                if k == 'a':
+                    if self.direction != "RIGHT":
+                        self.direction = "LEFT"
+                        break
+
+                if k == 'd':
+                    if self.direction != "LEFT":
+                        self.direction = "RIGHT"
+                        break
