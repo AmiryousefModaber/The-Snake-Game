@@ -28,7 +28,23 @@ class Snake:
         return x
 
     def next_move(self):
-        pass
+        head = self.get_head()
+        new_head = (self.val(head[0] + self.dx[self.direction]), self.val(head[1] + self.dy[self.direction]))
+
+        cell = self.game.get_cell(new_head)
+
+        is_blocked = (cell.color == consts.block_color)
+        if not is_blocked:
+            for snake in self.game.snakes:
+                if new_head in snake.cells:
+                    is_blocked = True
+                    break
+
+        if is_blocked:
+            self.game.kill(self)
+            return
+        
+
 
     def handle(self, keys):
         for k in keys:
