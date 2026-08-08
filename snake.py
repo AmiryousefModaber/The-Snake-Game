@@ -43,6 +43,15 @@ class Snake:
         if is_blocked:
             self.game.kill(self)
             return
+
+        is_fruit = (cell.color == consts.fruit_color)
+
+        self.cells.append(new_head)
+        cell.set_color(self.color)
+
+        if not is_fruit:
+            tail = self.cells.pop(0)
+            self.game.get_cell(tail).set_color(consts.back_color)
         
 
 
