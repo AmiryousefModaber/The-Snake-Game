@@ -39,18 +39,19 @@ class GameManager:
 
         for i in range(0, self.size):
             for j in range(0, self.size):
+                if self.get_cell((i, j)).color == consts.back_color:
 
-                mn = 100000000
+                    mn = 100000000
 
-                for x in range(0, self.size):
-                    for y in range(0, self.size):
-                        if self.get_cell((x, y)).color != consts.back_color:
-                            mn = min(mn, int( abs(x-i) + abs(y-j) ))
+                    for x in range(0, self.size):
+                        for y in range(0, self.size):
+                            if self.get_cell((x, y)).color != consts.back_color:
+                                mn = min(mn, int( abs(x-i) + abs(y-j) ))
 
 
-                if mn > mx:
-                    mx = mn
-                    ret = i, j
+                    if mn > mx:
+                        mx = mn
+                        ret = i, j
 
         return ret
 

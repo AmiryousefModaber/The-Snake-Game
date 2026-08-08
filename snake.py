@@ -58,22 +58,13 @@ class Snake:
     def handle(self, keys):
         for k in keys:
             if k in self.keys:
-                if k == 'w':
-                    if self.direction != 'DOWN':
-                        self.direction = "UP"
-                        break
+                new_dir = self.keys[k]
+                if  (new_dir == 'UP' and self.direction != 'DOWN') or \
+                    (new_dir == 'DOWN' and self.direction != 'UP') or \
+                    (new_dir == 'LEFT' and self.direction != 'RIGHT') or \
+                    (new_dir == 'RIGHT' and self.direction != 'LEFT'):
+                    self.direction = new_dir
+                    break
 
-                if k == 's':
-                    if self.direction != "UP":
-                        self.direction = "DOWN"
-                        break
+            
 
-                if k == 'a':
-                    if self.direction != "RIGHT":
-                        self.direction = "LEFT"
-                        break
-
-                if k == 'd':
-                    if self.direction != "LEFT":
-                        self.direction = "RIGHT"
-                        break
